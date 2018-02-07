@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	    <div>
+ <p>Kirjat</p>
+   <table>
+   <tr>
+   <th>Author</th>
+   <th>Title</th>
+   <th>ISBN</th>
+   <th>Year</th>
+   </tr>
+   <tr th:each="kirja:${kirjat}">
+   <td th:text="${kirja.getAuthor()}"></td>
+   <td th:text="${kirja.getTitle()}"></td>
+   <td th:text="${kirja.getISBN()}"></td>
+   <td th:text="${kirja.getYear()}"></td>
+   <td th:href="@{kirja/{id}(id=${kirja.getId()})}">DELETE</td>
+   </tr>
+   </table>
+ </div>
+ <a href="/index">pääsivu</a>
+</body>
+</html>

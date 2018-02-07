@@ -1,13 +1,22 @@
 package kirjakauppa.harjoitus.object;
 
-public class Kirja {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	long id;
-	String title;
-	String author;
-	String year;
-	String isbn;
-	double price;
+@Entity
+public class Kirja {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private String title;
+	private String author;
+	private String year;
+	private String isbn;
+	private double price;
+	
+	
 	public Kirja(long id, String title, String author, String year, String isbn, double price) {
 		super();
 		this.id = id;
