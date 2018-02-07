@@ -3,11 +3,12 @@
 <head>
     <title>Booklist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-	    <div>
+	    
  <p>Kirjat</p>
-   <table>
+   <table class="table table-striped">
    <tr>
    <th>Author</th>
    <th>Title</th>
@@ -19,11 +20,12 @@
    <td th:text="${kirja.getTitle()}"></td>
    <td th:text="${kirja.getIsbn()}"></td>
    <td th:text="${kirja.getYear()}"></td><td>
-   <a th:href="@{kirja/{id}(id=${kirja.getId()})}">DELETE</a>
+   <a th:href="@{kirja/{id}(id=${kirja.getId()})}" class="btn btn-danger">DELETE</a>
    </td>
    </tr>
    </table>
- </div>
+<a href="/kirja">lisaa</a>
  <a href="/index">pääsivu</a>
+ 
 </body>
 </html>

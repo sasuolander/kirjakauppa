@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	private KirjaRepo repo;
+	
+	
 	
 	
 	@RequestMapping(value="index",method = RequestMethod.GET)
@@ -29,7 +32,7 @@ public class BookController {
 	@RequestMapping(value="save",method = RequestMethod.POST)
 	public String save(Kirja kirja) {
 		repo.save(kirja);
-		return "booklist";
+		return "redirect:kirjat";
 	}
 	
 	@RequestMapping(value="kirja",method = RequestMethod.GET)
@@ -39,9 +42,11 @@ public class BookController {
 	}
 
 	@RequestMapping(value="kirja/{id}",method = RequestMethod.GET)
-	public String RemoveKirja(@PathVariable(value = "id") Long id) {
+	public RedirectView RemoveKirja(@PathVariable(value = "id" ) Long id,Model model) {
 		repo.delete(id);
-		return "booklist";
+		RedirectView rv =	new RedirectView();
+		rv.setUrl("/kirjat");
+		return rv;
 	}
 
 	@RequestMapping(value="kirjat",method = RequestMethod.GET)
