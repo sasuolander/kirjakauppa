@@ -11,6 +11,7 @@ public interface KirjaRepo extends  CrudRepository<Kirja,Long>{
  
 	
 	//List<Kirja>kirjat ();
+	//ArrayList<Kirja>findAll();
 	
 	
 

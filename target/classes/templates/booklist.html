@@ -17,9 +17,10 @@
    <tr th:each="kirja:${kirjat}">
    <td th:text="${kirja.getAuthor()}"></td>
    <td th:text="${kirja.getTitle()}"></td>
-   <td th:text="${kirja.getISBN()}"></td>
-   <td th:text="${kirja.getYear()}"></td>
-   <td th:href="@{kirja/{id}(id=${kirja.getId()})}">DELETE</td>
+   <td th:text="${kirja.getIsbn()}"></td>
+   <td th:text="${kirja.getYear()}"></td><td>
+   <a th:href="@{kirja/{id}(id=${kirja.getId()})}">DELETE</a>
+   </td>
    </tr>
    </table>
  </div>

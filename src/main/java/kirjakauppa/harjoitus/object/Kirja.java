@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Kirja {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String title;
 	private String author;
 	private String year;
@@ -17,7 +17,7 @@ public class Kirja {
 	private double price;
 	
 	
-	public Kirja(long id, String title, String author, String year, String isbn, double price) {
+	public Kirja(Long id, String title, String author, String year, String isbn, double price) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -29,17 +29,17 @@ public class Kirja {
 	
 	public Kirja() {
 		super();
-		this.id =0;
+		this.id =null;
 		this.title = null;
 		this.author = null;
 		this.year = null;
 		this.isbn = null;
 		this.price = 0;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getTitle() {

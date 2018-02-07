@@ -39,15 +39,16 @@ public class BookController {
 	}
 
 	@RequestMapping(value="kirja/{id}",method = RequestMethod.GET)
-	public String RemoveKirja(@PathVariable(value = "id") long id) {
+	public String RemoveKirja(@PathVariable(value = "id") Long id) {
 		repo.delete(id);
-		return null;
+		return "booklist";
 	}
 
 	@RequestMapping(value="kirjat",method = RequestMethod.GET)
 	public String ListKirja(Model model) {
-		ArrayList<Kirja> kirjat = repo.findAll();
-		model.addAttribute(kirjat);
+		//ArrayList<Kirja> kirjat = repo.findAll();
+		
+		model.addAttribute("kirjat",repo.findAll());
 		return "booklist";
 	}
 }
