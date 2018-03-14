@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -26,7 +27,7 @@ public class BookController {
 
 	@RequestMapping(value="/index",method = RequestMethod.GET)
 	public String mainpage2(){
-		return "secret/index";
+		return "secret/mainpage";
 	}
 	
 	@RequestMapping(value="save",method = RequestMethod.POST)
@@ -57,8 +58,8 @@ public class BookController {
 		return "secret/booklist";
 	}
 	@RequestMapping(value="",method = RequestMethod.GET)
-	public @ResponseBody String errorMessage(){
-		return "error";
+	public ModelAndView errorMessage(){
+		return new ModelAndView("redirect:/index");
 	}
 
 }
