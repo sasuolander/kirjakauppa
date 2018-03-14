@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 @Entity
 public class Kirja {
 	@Id
@@ -15,8 +14,6 @@ public class Kirja {
 	private String year;
 	private String isbn;
 	private double price;
-	
-	
 	public Kirja(Long id, String title, String author, String year, String isbn, double price) {
 		super();
 		this.id = id;
@@ -24,9 +21,7 @@ public class Kirja {
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
-		this.price = price;
-	}
-	
+		this.price = price; }
 	public Kirja() {
 		super();
 		this.id =null;
@@ -34,8 +29,7 @@ public class Kirja {
 		this.author = null;
 		this.year = null;
 		this.isbn = null;
-		this.price = 0;
-	}
+		this.price = 0; }
 	public Long getId() {
 		return id;
 	}

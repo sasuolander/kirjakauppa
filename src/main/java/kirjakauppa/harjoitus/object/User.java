@@ -1,7 +1,5 @@
 package kirjakauppa.harjoitus.object;
-
 import javax.persistence.*;
-
 @Entity(name="username2")
 public class User {
     @Id
@@ -15,37 +13,25 @@ public class User {
     private String passwordHash;
     @Column(name = "role", nullable = false)
     private String role;
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
-
     public void setRole(String role) {
         this.role = role;
     }
-
-    public Long getId() {
-
-        return id;
-    }
-
+    public Long getId() {return id; }
     public String getUsername() {
         return username;
     }
-
     public String getPasswordHash() {
         return passwordHash;
     }
-
     public String getRole() {
         return role;
-    }
-}
+    }}
