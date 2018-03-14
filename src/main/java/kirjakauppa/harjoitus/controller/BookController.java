@@ -4,15 +4,13 @@ import kirjakauppa.harjoitus.object.Kirja;
 import kirjakauppa.harjoitus.repository.*;
 
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -21,31 +19,33 @@ public class BookController {
 	@Autowired
 	private KirjaRepo repo;
 	
-	
-	
-	
-	@RequestMapping(value="index",method = RequestMethod.GET)
+	@RequestMapping(value="/login",method = RequestMethod.GET)
 	public String mainpage(){
-		return "index";
+		return "login";
+	}
+
+	@RequestMapping(value="/index",method = RequestMethod.GET)
+	public String mainpage2(){
+		return "secret/index";
 	}
 	
 	@RequestMapping(value="save",method = RequestMethod.POST)
 	public String save(Kirja kirja) {
 		repo.save(kirja);
-		return "redirect:kirjat";
+		return "redirect:secret/kirjat";
 	}
 	
 	@RequestMapping(value="kirja",method = RequestMethod.GET)
 	public String addkirjamenu(Model model){
 		model.addAttribute("kirja", new Kirja());
-		return "addbook";
+		return "secret/addbook";
 	}
 
 	@RequestMapping(value="kirja/{id}",method = RequestMethod.GET)
 	public RedirectView RemoveKirja(@PathVariable(value = "id" ) Long id,Model model) {
 		repo.delete(id);
 		RedirectView rv =	new RedirectView();
-		rv.setUrl("/kirjat");
+		rv.setUrl("secret/kirjat");
 		return rv;
 	}
 
@@ -54,6 +54,11 @@ public class BookController {
 		//ArrayList<Kirja> kirjat = repo.findAll();
 		
 		model.addAttribute("kirjat",repo.findAll());
-		return "booklist";
+		return "secret/booklist";
 	}
+	@RequestMapping(value="",method = RequestMethod.GET)
+	public @ResponseBody String errorMessage(){
+		return "error";
+	}
+
 }
